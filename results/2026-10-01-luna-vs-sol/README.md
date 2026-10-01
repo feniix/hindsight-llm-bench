@@ -1,7 +1,8 @@
 # gpt-5.6-luna vs gpt-6-luna vs gpt-6.1-sol on Hindsight 0.10.2
 
 Run 2026-09-30 (main) and 2026-10-01 (follow-up) on a throwaway bench restored
-from a backup of a coding-agent memory install (26 banks, about 1.85M rows).
+from a backup of a Hindsight install used as coding-agent memory through the
+Hindsight coding-agent plugin (26 banks, about 1.85M rows).
 Provider `openai-codex` on a ChatGPT subscription, reasoning effort `low` for
 every model. Baseline: gpt-5.6-luna (`g56`). Candidates: gpt-6-luna (`g6l`),
 gpt-6.1-sol (`sol`). Six blocks per phase, each model in each position twice.

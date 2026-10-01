@@ -1,7 +1,9 @@
 # Methodology
 
 How the comparison is designed, what each step measures, and how the results
-are computed. The numbers quoted as examples are from the first published run
+are computed. The harness targets banks written by the Hindsight coding-agent
+plugin; the README's [Scope](README.md#scope) lists what to adapt for other
+content. The numbers quoted as examples are from the first published run
 ([`results/2026-10-01-luna-vs-sol/`](results/2026-10-01-luna-vs-sol/README.md)).
 
 ## Principles

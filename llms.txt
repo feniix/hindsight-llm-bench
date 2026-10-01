@@ -7,6 +7,8 @@ Two words carry the safety model; read every step through them:
 - **source**: the user's real Hindsight install ($HINDSIGHT_SOURCE_URL). Read-only. The only contact is `GET` requests from `prepare/export.py` and the `hindsight-admin backup` the user makes.
 - **bench**: the throwaway containers ($BENCH_CONTAINER, $FU_CONTAINER) on their own volumes and their own provider login. Everything that writes, writes here.
 
+Scope: built for banks written by the Hindsight coding-agent plugin (session transcripts, commit history, notes) on the `openai-codex` provider. Before measuring other kinds of banks, adapt the parts listed in README.md, Scope.
+
 Everything under `work/` is bank content (documents, facts, answers, traces, judge pairs). It stays local and git-ignored; results leave the machine only as aggregates.
 
 ## Docs

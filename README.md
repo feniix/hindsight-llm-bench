@@ -18,6 +18,30 @@ In short, gpt-6.1-sol extracted significantly better facts at retain, and banks
 built from them answered a gold question set better. On reflect and page
 refresh it was slower with no quality gain, so gpt-5.6-luna stayed for those.
 
+## Scope
+
+The harness was built for, and has only been run on, a Hindsight install that
+serves as memory for coding agents through the Hindsight coding-agent plugin,
+using the `openai-codex` provider. Its banks are per-repository, hold
+coding-agent session transcripts, commit history and notes, and carry knowledge
+pages that agents read back through page search and reflect.
+
+These parts assume that kind of content. Adapt them before measuring a
+different kind of bank:
+
+| Part | Assumes |
+|---|---|
+| `retain/rubric.md` | the source is a coding-agent session transcript, commit history or project note |
+| `followup/gold.py` (prompt) | questions a teammate would ask a project's memory |
+| `bench_config.STRATEGY_BY_CONTEXT` | the context strings the plugin writes, mapped to its retain strategies (`conversation`, `document`, `survey`) |
+| query kinds in `METHODOLOGY.md` | how coding agents call reflect: knowledge-page questions, surveys, a session's first prompt |
+| `proxy/` | the `openai-codex` provider; other providers record tokens in `llm_requests` instead |
+
+These parts work for any Hindsight install: the runners (`reflect/`,
+`retain/run.py`), the block plan, the bench lifecycle in `scripts/`, the
+comparison and statistics, the Gemini judge and per-fact scoring mechanics, and
+the follow-up driver.
+
 ## What it measures
 
 | Phase | Operation | How | Compared on |
