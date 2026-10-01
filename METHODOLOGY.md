@@ -112,7 +112,8 @@ without storing anything.
 
 - **Exact tokens.** Hindsight's `openai-codex` provider does not read the usage
   block Codex sends in its final `response.completed` event. It estimates
-  output tokens from text length and records no reasoning tokens.
+  input and output tokens from text length (characters ÷ 4) and records no
+  reasoning tokens.
   `proxy/codex_proxy.py` sits between Hindsight and Codex
   (`HINDSIGHT_API_LLM_BASE_URL`), streams responses through unchanged, and
   logs each call's model, timing, time to first byte, and usage (input,
