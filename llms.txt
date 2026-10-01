@@ -1,0 +1,42 @@
+# hindsight-local-llm-comparison
+
+> Benchmark harness for choosing an LLM per operation (retain, page refresh, reflect, and downstream consolidation) in a self-hosted Hindsight agent-memory install. Measures each operation on a throwaway bench restored from a backup, with balanced block order, blind pairwise judging and exact token accounting. Python standard library and bash only.
+
+Two words carry the safety model; read every step through them:
+
+- **source**: the user's real Hindsight install ($HINDSIGHT_SOURCE_URL). Read-only. The only contact is `GET` requests from `prepare/export.py` and the `hindsight-admin backup` the user makes.
+- **bench**: the throwaway containers ($BENCH_CONTAINER, $FU_CONTAINER) on their own volumes and their own provider login. Everything that writes, writes here.
+
+Everything under `work/` is bank content (documents, facts, answers, traces, judge pairs). It stays local and git-ignored; results leave the machine only as aggregates.
+
+## Docs
+
+- [README.md](README.md): what is measured, requirements, quickstart, layout
+- [METHODOLOGY.md](METHODOLOGY.md): design principles, each phase, statistics, judging, follow-up, known limitations. Read before changing any measurement or analysis.
+- [CONTRIBUTING.md](CONTRIBUTING.md): submitting results and code, pre-PR checks
+- [results/2026-10-01-luna-vs-sol/README.md](results/2026-10-01-luna-vs-sol/README.md): the published run; the shape for new results
+- [examples/](examples/): the format of every input file
+
+Each script documents its own usage in its module docstring (`python3 <script> --help`).
+
+## Reproduce a run
+
+1. Configure: `config.env` from `config.example.env`, `server.env` from `server.example.env` matching the source's settings, the backup at `$BACKUP_ZIP`, and a bench-only login (`CODEX_HOME=$CODEX_AUTH_DIR codex login`, run by the user). Done when `scripts/up.sh <baseline-model> restore` reports the bench up.
+2. Build inputs with `prepare/export.py` (docs, pages with `--screen` against the bench, queries) and `prepare/plan.py`. Done when `work/plan.json` gives every model each position equally often and every block holds items.
+3. Measure: start `proxy/codex_proxy.py` on `$PROXY_PORT`, then `scripts/run-main.sh`. Done when every run file under `work/runs/` has successful items and `work/main-*/llm_requests.jsonl` exists.
+4. Analyze and judge, per METHODOLOGY.md. Done when each candidate has latency ratios, a verdict split with p-value, and token totals against the baseline.
+
+The follow-up (`scripts/run-followup.sh`) needs `work/followup/plan.json`, `corpus.json` and `gold.json` first; see METHODOLOGY.md, Downstream follow-up.
+
+## Analyze existing run files
+
+Point `BENCH_WORK` at a directory holding `runs/reflect/` and `runs/retain/`, then use `reflect/compare.py`, `retain/compare.py`, `analysis/usage.py` and `followup/analyze.py report`. These read files only; no container is needed.
+
+## Contribute
+
+- Results: a new `results/<date>-<slug>/README.md` with aggregates only. Done when it states the version, models, effort, item counts, latency ratios, verdict splits, failures, tokens and deviations.
+- Code: paths, models and banks come from `config.env`, arguments or `bench_config.py`; a format change updates every reader in the same change. Done when the checks in CONTRIBUTING.md pass and any touched analysis reproduces a previous run's numbers unchanged.
+
+## Optional
+
+- [LICENSE](LICENSE): MIT
