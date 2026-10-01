@@ -6,6 +6,8 @@
 # Every LLM call goes through the proxy (usage.jsonl: exact input/cached/output/reasoning
 # tokens); llm_requests keeps full prompts and outputs; /metrics and the server log are
 # saved per run. Set PHASES="A" or PHASES="B" to run one phase.
+# Run files are named TAG-bN.json (reflect/run.py without --variant; with --variant
+# it writes LABEL-NAME.json instead, which this driver does not use).
 set -u
 . "$(dirname "$0")/common.sh"
 PLAN=$BENCH_WORK/plan.json

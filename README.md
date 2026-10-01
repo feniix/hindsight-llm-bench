@@ -1,4 +1,4 @@
-# hindsight-local-llm-comparison
+# hindsight-llm-bench
 
 Scripts and methodology for comparing LLMs on each operation of a self-hosted
 [Hindsight](https://github.com/vectorize-io/hindsight) agent-memory install:
@@ -44,16 +44,16 @@ judging, and the known limitations.
   Pairwise judging works with any judge that writes the verdict files
   described in the rubrics.
 
-The bench shares whatever quota your provider login has. A full main run made
-about 700 LLM calls and read about 10M input tokens; the follow-up about 1,100
-calls.
+The bench shares whatever quota your provider login has. Our main run (three
+models) made about 700 proxied LLM calls reading about 10.5M input tokens; the
+follow-up about 1,100 calls.
 
 ## Quickstart
 
 ```bash
 cp config.example.env config.env          # paths, ports, image, containers
 cp server.example.env server.env          # match your real install's settings
-# hindsight-admin backup of your install -> work/banks.zip
+# hindsight-admin backup of your install -> work/backup/banks.zip
 CODEX_HOME=./work/codex-auth codex login  # a separate login for the bench
 
 # 1. Inputs, read-only from your install (GET requests only)

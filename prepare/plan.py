@@ -29,15 +29,15 @@ import bench_config as cfg  # noqa: E402
 
 
 def orders(tags: list[str], blocks: int) -> list[list[str]]:
-    perms = [list(p) for p in itertools.permutations(tags)]
-    if blocks % len(perms) == 0:
-        # A cyclic arrangement of the permutations keeps consecutive blocks from repeating a first model.
-        rot = [tags[i:] + tags[:i] for i in range(len(tags))]
-        rev = [list(reversed(r)) for r in rot]
-        base = rot + rev if len(perms) == 2 * len(tags) else perms
-        return [base[i % len(base)] for i in range(blocks)]
     rot = [tags[i:] + tags[:i] for i in range(len(tags))]
-    return [rot[i % len(rot)] for i in range(blocks)]
+    perms = [list(p) for p in itertools.permutations(tags)]
+    if blocks % len(perms) != 0:
+        cycle = rot
+    elif len(tags) == 3:
+        cycle = rot + [list(reversed(r)) for r in rot]  # all 6 orders, no first model repeated back to back
+    else:
+        cycle = perms
+    return [cycle[i % len(cycle)] for i in range(blocks)]
 
 
 def deal(groups: list[list[str]], blocks: int) -> list[list[str]]:

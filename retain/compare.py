@@ -53,10 +53,11 @@ def report(base: dict, cand: dict) -> None:
         f"latency  base p50 {statistics.median(base[i]['seconds'] for i in ids):.1f}s  "
         f"cand p50 {statistics.median(cand[i]['seconds'] for i in ids):.1f}s  ratio {r[0]:.2f} [{r[1]:.2f}, {r[2]:.2f}]{mark}"
     )
-    nb, nc = [len(base[i]["facts"]) for i in ids], [len(cand[i]["facts"]) for i in ids]
+    count = lambda f: len(f) if isinstance(f, list) else int(f or 0)  # noqa: E731 - runs with fact text stripped carry a count
+    nb, nc = [count(base[i]["facts"]) for i in ids], [count(cand[i]["facts"]) for i in ids]
     print(f"facts    base total {sum(nb)} (median {statistics.median(nb)})  cand total {sum(nc)} (median {statistics.median(nc)})")
-    cb = [statistics.fmean(len(f["text"]) for f in base[i]["facts"]) for i in ids if base[i]["facts"]]
-    cc = [statistics.fmean(len(f["text"]) for f in cand[i]["facts"]) for i in ids if cand[i]["facts"]]
+    cb = [statistics.fmean(len(f["text"]) for f in base[i]["facts"]) for i in ids if isinstance(base[i]["facts"], list) and base[i]["facts"]]
+    cc = [statistics.fmean(len(f["text"]) for f in cand[i]["facts"]) for i in ids if isinstance(cand[i]["facts"], list) and cand[i]["facts"]]
     if cb and cc:
         print(f"fact length (mean chars per fact, median over docs)  base {statistics.median(cb):.0f}  cand {statistics.median(cc):.0f}")
     zero = [i for i in ids if not base[i]["facts"] or not cand[i]["facts"]]

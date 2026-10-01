@@ -5,7 +5,7 @@ cd "$ROOT"
 : "${BENCH_WORK:=./work}" "${HINDSIGHT_IMAGE:=ghcr.io/vectorize-io/hindsight:0.10.2}"
 : "${BENCH_CONTAINER:=hindsight-bench}" "${BENCH_VOLUME:=hindsight-bench-db}" "${BENCH_PORT:=18888}"
 : "${FU_CONTAINER:=hindsight-fu}" "${FU_VOLUME:=hindsight-fu-db}"
-: "${HINDSIGHT_SOURCE_URL:=http://localhost:8888}" "${BACKUP_ZIP:=$BENCH_WORK/banks.zip}"
+: "${HINDSIGHT_SOURCE_URL:=http://localhost:8888}" "${BACKUP_ZIP:=$BENCH_WORK/backup/banks.zip}"
 : "${SERVER_ENV:=./server.env}" "${CODEX_AUTH_DIR:=$BENCH_WORK/codex-auth}" "${PROXY_PORT:=8090}" "${SETTLE_SECONDS:=20}"
 abs() { (cd "$(dirname "$1")" 2>/dev/null && echo "$(pwd)/$(basename "$1")") || echo "$1"; }
 mkdir -p "$BENCH_WORK"

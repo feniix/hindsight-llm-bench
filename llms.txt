@@ -1,4 +1,4 @@
-# hindsight-local-llm-comparison
+# hindsight-llm-bench
 
 > Benchmark harness for choosing an LLM per operation (retain, page refresh, reflect, and downstream consolidation) in a self-hosted Hindsight agent-memory install. Measures each operation on a throwaway bench restored from a backup, with balanced block order, blind pairwise judging and exact token accounting. Python standard library and bash only.
 
@@ -17,7 +17,7 @@ Everything under `work/` is bank content (documents, facts, answers, traces, jud
 - [results/2026-10-01-luna-vs-sol/README.md](results/2026-10-01-luna-vs-sol/README.md): the published run; the shape for new results
 - [examples/](examples/): the format of every input file
 
-Each script documents its own usage in its module docstring (`python3 <script> --help`).
+Each Python script documents its own usage in its module docstring (`python3 <script> --help`); each shell script, in its header comment.
 
 ## Reproduce a run
 
