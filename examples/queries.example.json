@@ -1,0 +1,30 @@
+[
+ {
+  "id": "r00",
+  "kind": "page_refresh",
+  "bank": "coding-agent::example-repo",
+  "query": "What are the significant technical decisions made in this project and the rationale behind them?",
+  "params": {"budget": "mid", "max_tokens": 4096, "fact_types": ["observation"], "exclude_mental_models": true}
+ },
+ {
+  "id": "r01",
+  "kind": "page_survey",
+  "bank": "coding-agent::example-repo",
+  "query": "List the recurring gotchas in this project's tooling setup, with the fix each one needed.",
+  "params": {"budget": "mid", "max_tokens": 4096, "fact_types": ["observation"], "exclude_mental_models": true}
+ },
+ {
+  "id": "r02",
+  "kind": "first_prompt",
+  "bank": "coding-agent::example-repo",
+  "query": "How do I run the integration tests locally?",
+  "params": {"budget": "low"}
+ },
+ {
+  "id": "r03",
+  "kind": "agent_reflect",
+  "bank": "coding-agent::example-repo",
+  "query": "Why did we move the job queue off Redis, and what replaced it?",
+  "params": {"budget": "high"}
+ }
+]

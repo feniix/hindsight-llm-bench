@@ -1,0 +1,21 @@
+{
+ "docs": [
+  {
+   "id": "d00",
+   "bank": "coding-agent::example-repo",
+   "doc_id": "conversation:00000000-0000-0000-0000-000000000000",
+   "document_id": "conversation:00000000-0000-0000-0000-000000000000",
+   "chars": 412,
+   "content": "user: the CI job keeps timing out on the e2e suite\nassistant: The e2e job runs all 40 specs serially. I split it into 4 shards with --shard=N/4 in .github/workflows/ci.yml; the job now finishes in 6 minutes instead of 22. Merged as PR #118.\nuser: keep the shard count in one place\nassistant: Moved it to the E2E_SHARDS repository variable.",
+   "context": "coding agent session",
+   "timestamp": "2026-09-01T12:00:00+00:00",
+   "strategy": "conversation",
+   "metadata": {"source": "chat"},
+   "observation_scopes": "shared",
+   "tags": [],
+   "mission": "Focus on technical decisions, architecture choices, project conventions, tooling setup, and recurring gotchas. Deprioritize transient debugging chatter.",
+   "extraction_mode": "concise",
+   "custom_instructions": null
+  }
+ ]
+}

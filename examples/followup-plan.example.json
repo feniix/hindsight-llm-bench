@@ -1,0 +1,8 @@
+{
+ "base_model": "gpt-5.6-luna",
+ "candidate_model": "gpt-6.1-sol",
+ "corpora": {
+  "app": "coding-agent::example-repo",
+  "infra": "coding-agent::example-infra"
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "coding-agent::example-repo": {
+  "model": "gemini-3.1-pro-preview",
+  "questions": [
+   {
+    "id": "exa-q00",
+    "question": "How many shards does the e2e CI job use now, and where is that number set?",
+    "answer": "Four shards, set by the E2E_SHARDS repository variable.",
+    "type": "current_state",
+    "doc_ids": ["conversation:00000000-0000-0000-0000-000000000000"]
+   }
+  ]
+ }
+}

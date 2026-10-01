@@ -1,0 +1,12 @@
+[project]
+name = "hindsight-local-llm-comparison"
+version = "0.1.0"
+description = "Benchmark scripts for comparing LLMs per operation in a local Hindsight agent-memory install"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pyright]
+extraPaths = ["."]
+
+[tool.ruff]
+line-length = 160

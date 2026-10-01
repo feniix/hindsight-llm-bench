@@ -1,0 +1,8 @@
+# Inputs, runs, pairs, logs, traces and the Codex login: bank content and credentials.
+work/
+config.env
+server.env
+codex-auth/
+*.jsonl
+__pycache__/
+.DS_Store

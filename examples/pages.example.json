@@ -1,0 +1,11 @@
+{
+ "pages": [
+  {
+   "id": "p00",
+   "bank": "coding-agent::example-repo",
+   "mental_model_id": "mm-0123456789abcdef0123456789abcdef",
+   "name": "Key decisions and rationale",
+   "question": "What are the significant technical decisions made in this project and the rationale behind them?"
+  }
+ ]
+}
