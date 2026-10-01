@@ -9,6 +9,8 @@ gpt-6.1-sol (`sol`). Six blocks per phase, each model in each position twice.
 
 Everything below is reproduced by the scripts in this repository from the
 run's files, which are not published because they contain bank content.
+The write-up, with the setup and interpretation, is
+[Comparing Three LLMs Across Hindsight's Memory Operations](https://feniix-hq.net/blog/hindsight-llm-comparison/).
 
 ## Latency against gpt-5.6-luna
 

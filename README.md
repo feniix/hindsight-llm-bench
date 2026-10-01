@@ -13,7 +13,8 @@ and exact token accounting, so you can choose a model per operation.
 
 The first comparison run with them, gpt-5.6-luna against gpt-6-luna and
 gpt-6.1-sol on Hindsight 0.10.2, is summarized in
-[`results/2026-10-01-luna-vs-sol/`](results/2026-10-01-luna-vs-sol/README.md).
+[`results/2026-10-01-luna-vs-sol/`](results/2026-10-01-luna-vs-sol/README.md), and written up in
+[Comparing Three LLMs Across Hindsight's Memory Operations](https://feniix-hq.net/blog/hindsight-llm-comparison/).
 In short, gpt-6.1-sol extracted significantly better facts at retain, and banks
 built from them answered a gold question set better. On reflect and page
 refresh it was slower with no quality gain, so gpt-5.6-luna stayed for those.

@@ -17,6 +17,7 @@ Everything under `work/` is bank content (documents, facts, answers, traces, jud
 - [METHODOLOGY.md](METHODOLOGY.md): design principles, each phase, statistics, judging, follow-up, known limitations. Read before changing any measurement or analysis.
 - [CONTRIBUTING.md](CONTRIBUTING.md): submitting results and code, pre-PR checks
 - [results/2026-10-01-luna-vs-sol/README.md](results/2026-10-01-luna-vs-sol/README.md): the published run; the shape for new results
+- [Comparing Three LLMs Across Hindsight's Memory Operations](https://feniix-hq.net/blog/hindsight-llm-comparison/): the article that reports the published run
 - [examples/](examples/): the format of every input file
 
 Each Python script documents its own usage in its module docstring (`python3 <script> --help`); each shell script, in its header comment.
